@@ -1,4 +1,6 @@
-//use this function if our form has only text data
+ 
+
+// //use this function if our form has only text data
 export async function createRecord(collection, payload) {
     let response = await fetch(`${process.env.REACT_APP_SERVER}/${collection}`, {
         method: "POST",
@@ -11,13 +13,17 @@ export async function createRecord(collection, payload) {
 }
 
 //use this function if our form has file fields
-export async function createMultipartRecord(collection, payload) {
+export async function createMultipartRecord(collection, formData) {
     let response = await fetch(`${process.env.REACT_APP_SERVER}/${collection}`, {
         method: "POST",
-        headers: {
+        headers: { 
+            
         },
-        body: payload
+        body: formData
     })
+    if (!response.ok) {
+        throw new Error("Failed to create maincategory");
+    }
     return await response.json()
 }
 
@@ -46,13 +52,11 @@ export async function updateRecord(collection, payload) {
 
 //use this function if our form has file fields
 export async function updateMultipartRecord(collection, payload) {
-    let response = await fetch(`${process.env.REACT_APP_SERVER}/${collection}/${payload.get("id")}`, {
+    let response = await fetch(`${process.env.REACT_APP_SERVER}${collection}/${payload.id}`, {
         method: "PUT",
-        headers: {
-        },
-        body: payload
-    })
-    return response.json()
+        body: payload 
+    });
+    return response.json();
 }
 
 export async function deleteRecord(collection, payload) {

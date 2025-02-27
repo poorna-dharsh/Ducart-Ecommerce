@@ -1,59 +1,68 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import $ from 'jquery';  // Import jQuery
-import 'datatables.net-dt/css/dataTables.dataTables.min.css'; // Import DataTables styles
-import 'datatables.net';
+import $ from "jquery"; // Import jQuery
+import "datatables.net-dt/css/dataTables.dataTables.min.css"; // Import DataTables styles
+import "datatables.net";
 
+import Sidebar from "../../Components/Sidebar";
+import HeroSection from "../../Components/HeroSection";
+import { Link } from "react-router-dom";
 
-import Sidebar from '../../Components/Sidebar'
-import HeroSection from '../../Components/HeroSection'
-import { Link } from 'react-router-dom'
-
-import { deleteProduct, getProduct } from "../../Redux/ActionCreators/ProductActionCreators"
+import {
+  deleteProduct,
+  getProduct,
+} from "../../Redux/ActionCreators/ProductActionCreators";
 export default function AdminProduct() {
-  let [data, setData] = useState([])
+  let [data, setData] = useState([]);
 
-  let dispatch = useDispatch()
-  let ProductStateData = useSelector((state) => state.ProductStateData)
+  let dispatch = useDispatch();
+  let ProductStateData = useSelector((state) => state.ProductStateData);
 
   function deleteRecord(id) {
     if (window.confirm("Are You Sure to Delete that Item : ")) {
-      dispatch(deleteProduct({ id: id }))
-      getAPIData()
+      dispatch(deleteProduct({ id: id }));
+      getAPIData();
     }
   }
 
   function getAPIData() {
-    dispatch(getProduct())
+    dispatch(getProduct());
 
-    if (ProductStateData.length)
-      setData(ProductStateData)
-    else
-      setData([])
+    if (ProductStateData.length) setData(ProductStateData);
+    else setData([]);
 
     let time = setTimeout(() => {
-      $('#DataTable').DataTable()
+      $("#DataTable").DataTable();
     }, 500);
-    return time
+    return time;
   }
   useEffect(() => {
-    let time = getAPIData()
-    return () => clearTimeout(time)
-  }, [ProductStateData.length])
+    let time = getAPIData();
+    return () => clearTimeout(time);
+  }, [ProductStateData.length]);
 
   return (
     <>
       <HeroSection title="Admin" />
       <div className="container-fluid">
-        <div className='row'>
+        <div className="row">
           <div className="col-md-3">
             <Sidebar />
           </div>
           <div className="col-md-9">
-            <h5 className='bg-primary text-center text-light p-2'>Product <Link to="/admin/product/create"> <i className='fa fa-plus text-light float-end'></i></Link></h5>
+            <h5 className="bg-primary text-center text-light p-2">
+              Product{" "}
+              <Link to="/admin/product/create">
+                {" "}
+                <i className="fa fa-plus text-light float-end"></i>
+              </Link>
+            </h5>
             <div className="table-responsive">
-              <table className='table table-bordered table-hover table-striped' id='DataTable'>
+              <table
+                className="table table-bordered table-hover table-striped"
+                id="DataTable"
+              >
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -75,9 +84,9 @@ export default function AdminProduct() {
                   </tr>
                 </thead>
                 <tbody>
-                  {
-                    data.map((item, index) => {
-                      return <tr key={index}>
+                  {data.map((item, index) => {
+                    return (
+                      <tr key={index}>
                         <td>{item.id}</td>
                         <td>{item.name}</td>
                         <td>{item.maincategory}</td>
@@ -88,25 +97,56 @@ export default function AdminProduct() {
                         <td>&#8377;{item.basePrice}</td>
                         <td>&#8377;{item.discount}</td>
                         <td>&#8377;{item.finalPrice}</td>
-                        <td className={`${item.stock ? 'text-success' : 'text-danger'}`}>{item.stock ? "Yes" : "No"}</td>
+                        <td
+                          className={`${
+                            item.stock ? "text-success" : "text-danger"
+                          }`}
+                        >
+                          {item.stock ? "Yes" : "No"}
+                        </td>
                         <td>{item.stockQuantity}</td>
                         <td>
-                          <div style={{width:400}}>
-                          {
-                            item.pic?.map((item,index)=>{
-                              return <Link key={index} to={`${process.env.REACT_APP_SERVER}${item}`} target='_blank' rel='noreferrer'>
-                              <img src={`${process.env.REACT_APP_SERVER}${item}`} height={50} width={50} className='rounded me-2' alt="Product Image" />
-                            </Link>
-                            })
-                          }
+                          <div style={{ width: 400 }}>
+                            {item.pic?.map((item, index) => {
+                              return (
+                                <Link
+                                  key={index}
+                                  to={`${process.env.REACT_APP_SERVER}${item}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  <img
+                                    src={`${process.env.REACT_APP_SERVER}${item}`}
+                                    height={50}
+                                    width={50}
+                                    className="rounded me-2"
+                                    alt="Product Image"
+                                  />
+                                </Link>
+                              );
+                            })}
                           </div>
                         </td>
                         <td>{item.active ? "Yes" : "No"}</td>
-                        <td><Link to={`/admin/product/update/${item.id}`} className='btn btn-primary'><i className='fa fa-edit'></i></Link></td>
-                        <td><button className='btn btn-danger' onClick={() => deleteRecord(item.id)}><i className='fa fa-trash'></i></button></td>
+                        <td>
+                          <Link
+                            to={`/admin/product/update/${item.id}`}
+                            className="btn btn-primary"
+                          >
+                            <i className="fa fa-edit"></i>
+                          </Link>
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => deleteRecord(item.id)}
+                          >
+                            <i className="fa fa-trash"></i>
+                          </button>
+                        </td>
                       </tr>
-                    })
-                  }
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -114,18 +154,14 @@ export default function AdminProduct() {
         </div>
       </div>
     </>
-  )
+  );
 }
-
-
-
 
 // import React, { useEffect, useState } from 'react'
 
 // import $ from 'jquery';  // Import jQuery
 // import 'datatables.net-dt/css/dataTables.dataTables.min.css'; // Import DataTables styles
 // import 'datatables.net';
-
 
 // import Sidebar from '../../Components/Sidebar'
 // import HeroSection from '../../Components/HeroSection'
