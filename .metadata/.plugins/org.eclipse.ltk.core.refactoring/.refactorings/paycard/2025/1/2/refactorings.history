@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.api.ecom.paycard.entities.Card&apos; to &apos;Cart&apos;&#x0D;&#x0A;- Original project: &apos;paycard&apos;&#x0D;&#x0A;- Original element: &apos;com.api.ecom.paycard.entities.Card&apos;&#x0D;&#x0A;- Renamed element: &apos;com.api.ecom.paycard.entities.Cart&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Card&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.api.ecom.paycard.entities{Card.java[Card" matchStrategy="1" name="Cart" qualified="false" references="true" similarDeclarations="false" stamp="1736370541340" textual="false" version="1.0"/>
+</session>
