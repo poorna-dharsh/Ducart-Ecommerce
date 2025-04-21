@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+# Java / Spring Boot
+/target
+*.class
+*.jar
+*.war
+
+# Node / React
+/node_modules
+/build
+
+# General
+.env
+*.log
+*.iml
+.DS_Store
