@@ -50,40 +50,7 @@ export default function AdminUpdateMaincategory() {
       };
     });
   }
-  // function postData(e) {
-  //   e.preventDefault();
-  //   let error = Object.values(errorMessage).find((x) => x !== "");
-  //   if (error) setShow(true);
-  //   else {
-  //     let item = MaincategoryStateData.find(
-  //       (x) =>
-  //         x.name.toLocaleLowerCase() === data.name.toLocaleLowerCase() &&
-  //         x.id !== id
-  //     );
-  //     if (item) {
-  //       setShow(true);
-  //       setErrorMessage((old) => {
-  //         return {
-  //           ...old,
-  //           name: "Maincategory Name is Already Exist",
-  //         };
-  //       });
-  //     } else {
-  //       //this line is used in both dumy server and real server if form has no file field
-  //       // dispatch(updateMaincategory({ ...data }))
 
-  //       //but in case of real server and if form has file field
-  //       var formData = new FormData();
-  //       formData.append("id", data.id); //use id or _id according to your database
-  //       formData.append("name", data.name);
-  //       formData.append("pic", data.pic);
-  //       formData.append("active", data.active);
-  //       dispatch(updateMultipartRecord(formData));
-
-  //       navigate("/admin/maincategory");
-  //     }
-  //   }
-  // }
   function postData(e) {
     e.preventDefault();
 
@@ -141,13 +108,6 @@ export default function AdminUpdateMaincategory() {
     }
   }, [id, MaincategoryStateData]);
 
-  // useEffect(() => {
-  //   (() => {
-  //     dispatch(getMaincategory());
-  //     if (MaincategoryStateData.length)
-  //       setData(MaincategoryStateData.find((x) => x.id === id));
-  //   })();
-  // }, [MaincategoryStateData.length]);
   return (
     <>
       <HeroSection title="Admin" />

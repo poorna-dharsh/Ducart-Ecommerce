@@ -68,7 +68,7 @@ export default function AdminUpdateSubcategory() {
       } else {
         //but in case of real server and if form has file field
         var formData = new FormData();
-        formData.append("id", id); //use id or _id according to your database
+        formData.append("id", data.id); //use id or _id according to your database
         formData.append(
           "data",
           JSON.stringify({ name: data.name, active: data.active })
@@ -83,13 +83,14 @@ export default function AdminUpdateSubcategory() {
     }
   }
 
+  // First useEffect: Redux se data fetch karne ke liye
   useEffect(() => {
     dispatch(getSubcategory());
   }, [dispatch]);
-  useEffect(() => {
-    console.log("Redux Data:", SubcategoryStateData);
-    let category = SubcategoryStateData.find((x) => x.id === Number(id));
 
+  // Second useEffect: Data set karne ke liye jab redux data ya id change ho
+  useEffect(() => {
+    const category = SubcategoryStateData.find((x) => x.id === Number(id));
     if (category) {
       setData({
         name: category.name,
@@ -97,15 +98,8 @@ export default function AdminUpdateSubcategory() {
         active: category.active,
       });
     }
-  }, [id, SubcategoryStateData]);
+  }, [id, SubcategoryStateData, dispatch]);
 
-  // useEffect(() => {
-  //   (() => {
-  //     dispatch(getSubcategory());
-  //     if (SubcategoryStateData.length)
-  //       setData(SubcategoryStateData.find((x) => x.id === id));
-  //   })();
-  // }, [id, SubcategoryStateData.length]);
   return (
     <>
       <HeroSection title="Admin" />

@@ -79,7 +79,7 @@ export default function AdminCreateSubcategory() {
     (() => {
       dispatch(getSubcategory());
     })();
-  }, [SubcategoryStateData.length]);
+  }, [SubcategoryStateData.length, dispatch]);
   return (
     <>
       <HeroSection title="Admin" />
