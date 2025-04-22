@@ -50,48 +50,104 @@ export default function AdminUpdateMaincategory() {
       };
     });
   }
+  // function postData(e) {
+  //   e.preventDefault();
+  //   let error = Object.values(errorMessage).find((x) => x !== "");
+  //   if (error) setShow(true);
+  //   else {
+  //     let item = MaincategoryStateData.find(
+  //       (x) =>
+  //         x.name.toLocaleLowerCase() === data.name.toLocaleLowerCase() &&
+  //         x.id !== id
+  //     );
+  //     if (item) {
+  //       setShow(true);
+  //       setErrorMessage((old) => {
+  //         return {
+  //           ...old,
+  //           name: "Maincategory Name is Already Exist",
+  //         };
+  //       });
+  //     } else {
+  //       //this line is used in both dumy server and real server if form has no file field
+  //       // dispatch(updateMaincategory({ ...data }))
+
+  //       //but in case of real server and if form has file field
+  //       var formData = new FormData();
+  //       formData.append("id", data.id); //use id or _id according to your database
+  //       formData.append("name", data.name);
+  //       formData.append("pic", data.pic);
+  //       formData.append("active", data.active);
+  //       dispatch(updateMultipartRecord(formData));
+
+  //       navigate("/admin/maincategory");
+  //     }
+  //   }
+  // }
   function postData(e) {
     e.preventDefault();
+
+    if (!id) {
+      console.error("Error: Maincategory ID is undefined!");
+      return;
+    }
+
     let error = Object.values(errorMessage).find((x) => x !== "");
-    if (error) setShow(true);
-    else {
+    if (error) {
+      setShow(true);
+    } else {
       let item = MaincategoryStateData.find(
-        (x) =>
-          x.name.toLocaleLowerCase() === data.name.toLocaleLowerCase() &&
-          x.id !== id
+        (x) => x.name.toLowerCase() === data.name.toLowerCase() && x.id !== id
       );
       if (item) {
         setShow(true);
-        setErrorMessage((old) => {
-          return {
-            ...old,
-            name: "Maincategory Name is Already Exist",
-          };
-        });
+        setErrorMessage((old) => ({
+          ...old,
+          name: "Maincategory Name already exists",
+        }));
       } else {
-        //this line is used in both dumy server and real server if form has no file field
-        // dispatch(updateMaincategory({ ...data }))
+        const formData = new FormData();
 
-        //but in case of real server and if form has file field
-        var formData = new FormData();
-        formData.append("id", data.id); //use id or _id according to your database
-        formData.append("name", data.name);
-        formData.append("pic", data.pic);
-        formData.append("active", data.active);
+        // Add form fields
+        formData.append("id", id); // id bhi include kar diya
+        formData.append(
+          "data",
+          JSON.stringify({ name: data.name, active: data.active })
+        );
+
+        if (data.pic instanceof File) {
+          formData.append("pic", data.pic);
+        }
+
+        // Dispatch redux action with **pure formData**
         dispatch(updateMultipartRecord(formData));
-
         navigate("/admin/maincategory");
       }
     }
   }
-
   useEffect(() => {
-    (() => {
-      dispatch(getMaincategory());
-      if (MaincategoryStateData.length)
-        setData(MaincategoryStateData.find((x) => x.id === id));
-    })();
-  }, [MaincategoryStateData.length]);
+    dispatch(getMaincategory());
+  }, [dispatch]);
+  useEffect(() => {
+    console.log("Redux Data:", MaincategoryStateData);
+    let category = MaincategoryStateData.find((x) => x.id === Number(id));
+
+    if (category) {
+      setData({
+        name: category.name,
+        pic: category.pic,
+        active: category.active,
+      });
+    }
+  }, [id, MaincategoryStateData]);
+
+  // useEffect(() => {
+  //   (() => {
+  //     dispatch(getMaincategory());
+  //     if (MaincategoryStateData.length)
+  //       setData(MaincategoryStateData.find((x) => x.id === id));
+  //   })();
+  // }, [MaincategoryStateData.length]);
   return (
     <>
       <HeroSection title="Admin" />

@@ -30,10 +30,14 @@ function* getSaga() {
   let response = yield getRecord("maincategory");
   yield put({ type: GET_MAINCATEGORY_RED, payload: response });
 }
+
 function* updateSaga(action) {
   try {
-    yield updateMultipartRecord("maincategory", action.payload);
-    yield put({ type: UPDATE_MAINCATEGORY_RED, payload: action.payload });
+    const formData = action.payload;
+
+    const id = formData.get("id"); // id yaha se milega ab
+    const response = yield updateMultipartRecord("maincategory", formData, id);
+    yield put({ type: UPDATE_MAINCATEGORY_RED, payload: response });
   } catch (error) {
     console.error("Error updating maincategory:", error);
   }

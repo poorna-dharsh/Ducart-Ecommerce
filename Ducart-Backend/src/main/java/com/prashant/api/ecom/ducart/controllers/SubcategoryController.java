@@ -30,9 +30,9 @@ public class SubcategoryController {
 
   // create subcategory
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public ResponseEntity<Subcategory> createSubcategory(@RequestPart("subcategory") String jsonData,
+  public ResponseEntity<Subcategory> createSubcategory(@RequestPart("data") String jsonData,
       SubcategoryDTO subcategoryDTO,
-      @RequestPart("file") MultipartFile file) {
+      @RequestPart("pic") MultipartFile file) {
     try {
       // Convert JSON string to SubcategoryDTO object
       ObjectMapper mapper = new ObjectMapper();
@@ -54,8 +54,8 @@ public class SubcategoryController {
   // Update subcategory by ID
   @PutMapping("/{id}")
   public ResponseEntity<Subcategory> updateSubcategoryById(@PathVariable Long id,
-      @RequestPart("subcategory") String jsonData,
-      @RequestPart("file") MultipartFile file) {
+      @RequestPart("data") String jsonData,
+      @RequestPart("pic") MultipartFile file) {
     try {
       // Convert JSON string to SubcategoryDTO object
       ObjectMapper mapper = new ObjectMapper();

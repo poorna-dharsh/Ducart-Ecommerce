@@ -32,7 +32,7 @@ public class MaincategoryService {
           // File upload Logic
           if (file != null && !file.isEmpty()) {
                String relativePath = saveFile(file);
-               maincategory.setPic(relativePath);
+               maincategoryDTO.setPic(relativePath);
 
           }
           return maincategoryRepo.save(maincategory);
@@ -57,7 +57,6 @@ public class MaincategoryService {
                throws IOException {
 
           // File upload Logic
-
           if (file != null && !file.isEmpty()) {
                String relativePath = saveFile(file);
                maincategoryDTO.setPic(relativePath);
