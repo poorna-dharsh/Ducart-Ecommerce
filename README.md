@@ -2,7 +2,40 @@
 
 This repository contains **three powerful full stack projects** built with Java and ReactJS:
 - 🛍️ **DUCART**
+- Ducart Java Full Stack Project — A complete e-commerce web application built using Spring Boot (Java) for the backend and React JS with Redux for the frontend. Features include user authentication, admin dashboard, Main Categories, Sub Categories ,Products, Brands, Testimonial, Newsletter, Users, Checkouts, Image Upload Support, Secure Authentication support, and RESTful API integration.
+- 🚀 Tech Stack
+- 🔧 Backend (Java)
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- MySQL
+- Lombok
+- Hibernate Validator
+- REST APIs
+- 🎨 Frontend (React)
+- React JS
+- Redux Toolkit
+- Axios
+- React Router DOM
+- Bootstrap / FontAwesome
+- 🧰 Features
+- Admin Panel Dashboard
+- CRUD for:
+- Main Categories
+- Sub Categories
+- Products
+- Brands
+- Testimonial
+- Newsletter
+- Users
+- Checkouts
+- Image Upload Support
+- Secure Authentication
+- API Integration with React Frontend
+  -  Postman-tested Endpoints
+- Ducart Ecommerce Website Home Page Show ---
 - ![Screenshot 2025-04-21 221203](https://github.com/user-attachments/assets/d049df05-2d31-48d6-a5e5-8f3eac059ad8)
+
 - Admin Panel Some Curd Operation follow
 - ![Screenshot 2025-04-21 221643](https://github.com/user-attachments/assets/10deec9d-157e-4b54-a44d-7aa0aa822b1d)
 
@@ -11,7 +44,7 @@ This repository contains **three powerful full stack projects** built with Java 
 - 💳 **PayCart**
 - 🏪 **APNA MARKET**
  A
-All projects follow the same modern tech stack and best practices.
+-All projects follow the same modern tech stack and best practices.
 
 ---
 
