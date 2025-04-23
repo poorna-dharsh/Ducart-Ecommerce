@@ -59,7 +59,7 @@ public class SubcategoryService {
     }
     // Find existing subcategory by ID and update its properties
     Subcategory existingSubcategory = subcategoryRepo.findById(id)
-        .orElseThrow(() -> new RuntimeException("Subcategory not found"));
+        .orElseThrow(() -> new RuntimeException("Subcategory is not found"));
     subcategoryDTO.setName(subcategoryDTO.getName());
     subcategoryDTO.setPic(subcategoryDTO.getPic());
     subcategoryDTO.setActive(subcategoryDTO.isActive());
