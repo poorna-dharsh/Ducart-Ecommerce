@@ -129,7 +129,7 @@ export default function AdminCreateProduct() {
       );
 
       // Handle images
-      if (data.pic instanceof File) {
+      if (data.pic instanceof FileList) {
         formData.append("pic", data.pic);
       }
 
