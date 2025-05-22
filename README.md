@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# Java Full Stack Projects 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains **three powerful full stack projects** built with Java and ReactJS:
+- 🛍️ **DUCART**
+- Ducart Java Full Stack Project — A complete e-commerce web application built using Spring Boot (Java) for the backend and React JS with Redux for the frontend. Features include user authentication, admin dashboard, Main Categories, Sub Categories ,Products, Brands, Testimonial, Newsletter, Users, Checkouts, Image Upload Support, Secure Authentication support, and RESTful API integration.
+- 🚀 Tech Stack
+- 🔧 Backend (Java)
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- MySQL
+- Lombok
+- Hibernate Validator
+- REST APIs
+- 🎨 Frontend (React)
+- React JS
+- Redux Toolkit
+- Axios
+- React Router DOM
+- Bootstrap / FontAwesome
+- 🧰 Features
+- Admin Panel Dashboard
+- CRUD for:
+- Main Categories
+- Sub Categories
+- Products
+- Brands
+- Testimonial
+- Newsletter
+- Users
+- Checkouts
+- Image Upload Support
+- Secure Authentication
+- API Integration with React Frontend
+  -  Postman-tested Endpoints
+- Ducart Ecommerce Website Home Page Show ---
+- ![Screenshot 2025-04-21 221203](https://github.com/user-attachments/assets/d049df05-2d31-48d6-a5e5-8f3eac059ad8)
 
-## Available Scripts
+- Admin Panel Some Curd Operation follow
+- ![Screenshot 2025-04-21 221643](https://github.com/user-attachments/assets/10deec9d-157e-4b54-a44d-7aa0aa822b1d)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 💳 **PayCart**
+- 🏪 **APNA MARKET**
+ A
+-All projects follow the same modern tech stack and best practices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚧 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔷 Frontend
+- ReactJS ⚛️
+- Redux for state management
+- Bootstrap + Custom CSS for UI styling
 
-### `npm run build`
+### 🟦 Backend
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Spring Security
+- Spring Validation
+- Lombok
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🛢️ Database
+- MySQL
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Project Structure
 
-### `npm run eject`
+Each project is self-contained and follows a clean MVC architecture. Here's how the repository is structured:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+/java-fullstack-projects
+│
+├── DUCART
+│   ├── backend (Spring Boot)
+│   └── frontend (ReactJS)
+│
+├── PayCart
+│   ├── backend (Spring Boot)
+│   └── frontend (ReactJS)
+│
+└── APNA-MARKET
+    ├── backend (Spring Boot)
+    └── frontend (ReactJS)
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔥 Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Authentication & Authorization with Spring Security
+- Image upload & management (DUCART)
+- CRUD operations for entities like  Maincategory, Subcategory, Brands, Product, Testimonial, Newsleter, User, Checkouts, Contact Us, Categories, Products Admin Profile, user profile
+- Responsive and interactive UI
+- Secure APIs with role-based access
+- Reusable components & modular code
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ How to Run
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/Prashantamityonline/Java-FullStack-Projects.git]
+   cd java-fullstack-projects
+   ```
 
-### Code Splitting
+2. Navigate into any project folder (`DUCART`, `PayCart`, or `APNA-MARKET`) and follow the setup instructions in their respective `README.md` files.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🙌 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📧 Contact
 
-### Advanced Configuration
+Created with ❤️ by [Prashant Singh](https://github.com/Prashantamityonline))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## ⭐️ Don't forget to star this repository if you found it useful!
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Let me know if you want to split this into multiple `README.md` files inside each project folder or need individual feature explanations per project.
