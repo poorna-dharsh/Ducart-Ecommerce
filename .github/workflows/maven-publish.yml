@@ -1,7 +1,7 @@
-name: Maven Package
+
+name: Maven WAR Package
 
 on:
-  workflow_dispatch: 
   push:
     branches: [ main ]
   pull_request:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -26,8 +26,14 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
-    - name: Build with Maven
+    - name: Build WAR with Maven
       run: mvn -B clean package
 
     - name: Run tests
       run: mvn test
+
+    - name: Upload WAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: war-artifact
+        path: target/*.war
