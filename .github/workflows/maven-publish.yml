@@ -1,4 +1,4 @@
-name: Maven WAR Package
+name: Build WAR Artifact
 
 on:
   push:
@@ -31,8 +31,11 @@ jobs:
     - name: Run tests
       run: mvn test
 
+    - name: List target folder contents
+      run: ls -l target
+
     - name: Upload WAR artifact
       uses: actions/upload-artifact@v4
       with:
-        name: war-artifact
+        name: Ducart-WAR
         path: target/*.war
