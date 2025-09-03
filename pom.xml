@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -15,7 +14,7 @@
     <groupId>com.prashant.api.ecom.ducart</groupId>
     <artifactId>Ducart-Backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging> <!-- This is the key change -->
+    <packaging>war</packaging>
     <name>Ducart-Backend</name>
     <description>This project is ducart backend</description>
 
@@ -43,8 +42,7 @@
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+           >true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,7 +58,7 @@
     </dependencies>
 
     <build>
-        <finalName>Ducart-Backend</finalName> <!-- Optional: sets WAR file name -->
+        <finalName>Ducart-Backend</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -74,15 +72,14 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-                           <groupId>org.springframework.boot</groupId>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                                               </excludes>
                 </configuration>
             </plugin>
         </plugins>
