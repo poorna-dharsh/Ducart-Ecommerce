@@ -1,87 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+name: Maven WAR Package
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-    <groupId>com.prashant.api.ecom.ducart</groupId>
-    <artifactId>Ducart-Backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>Ducart-Backend</name>
-    <description>This project is ducart backend</description>
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+    permissions:
+      contents: read
+      packages: write
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-           >true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Required for WAR packaging -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    <build>
-        <finalName>Ducart-Backend</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                                               </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Build WAR with Maven
+      run: mvn -B clean package
+
+    - name: Run tests
+      run: mvn test
+
+    - name: Upload WAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: war-artifact
+        path: target/*.war
