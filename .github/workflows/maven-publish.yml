@@ -39,3 +39,9 @@ jobs:
       with:
         name: Ducart-WAR
         path: target/*.war
+
+    - name: Deploy WAR to Tomcat
+      run: |
+        curl -T target/*.war \
+        "http://${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }}@${{ secrets.TOMCAT_HOST }}/manager/text/deploy?path=${{ secrets.TOMCAT_CONTEXT }}&update=true"
+
