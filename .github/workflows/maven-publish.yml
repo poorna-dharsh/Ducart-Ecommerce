@@ -1,4 +1,4 @@
-name: Build WAR Artifact
+name: Build and Deploy WAR Artifact
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     permissions:
@@ -41,7 +41,12 @@ jobs:
         path: target/*.war
 
     - name: Deploy WAR to Tomcat
+      env:
+        TOMCAT_USER: ${{ secrets.TOMCAT_USER }}
+        TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
+        TOMCAT_HOST: ${{ secrets.TOMCAT_HOST }}
+        TOMCAT_CONTEXT: ${{ secrets.TOMCAT_CONTEXT }}
       run: |
-        curl -T target/*.war \
-        "http://${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }}@${{ secrets.TOMCAT_HOST }}/manager/text/deploy?path=${{ secrets.TOMCAT_CONTEXT }}&update=true"
-
+        echo "Deploying WAR to Tomcat..."
+        curl -v --upload-file target/*.war \
+          "http://$TOMCAT_USER:$TOMCAT_PASSWORD@$TOMCAT_HOST/manager/text/deploy?path=$TOMCAT_CONTEXT&update=true"
